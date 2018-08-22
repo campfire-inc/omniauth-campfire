@@ -17,12 +17,12 @@ module OmniAuth
           email: raw_info["email"],
           name: raw_info["name"],
           profile: raw_info["profile"],
-          profile_image_url: raw_info["profile_image_url"]
+          profile_image_url: raw_info["profile_image_path"]
         }
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/api/me.json').parsed
+        @raw_info ||= access_token.get('/api/me.json').parsed['user_data']
       end
     end
   end
