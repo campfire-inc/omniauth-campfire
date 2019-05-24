@@ -22,7 +22,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/api/me.json').parsed['user_data']
+        @raw_info ||= MultiJson.load(access_token.get('https://api.camp-fire.jp/me.json').body)['user_data']
       end
     end
   end
